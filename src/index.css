@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+@theme {
+   --color-prime: #7f55b1;
+   --color-semprime: #9B7EBD;
+   --color-secondaryone: #F49BAB;
+   --color-secondarytwo: #FFE1E0;
+}
