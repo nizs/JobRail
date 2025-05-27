@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Lottie from 'lottie-react';
 import regAniime from '../../assets/lottie/register_animation.json';
+import AuthContext from '../../Context/AuthContext';
 
+
+
+// schema
 const schema = yup.object().shape({
   firstName: yup.string().required('First name is required').max(30),
   lastName: yup.string().required('Last name is required').max(30),
@@ -18,6 +22,9 @@ const schema = yup.object().shape({
   photo: yup.mixed().required('Photo is required'),
 });
 
+
+
+
 const Register = () => {
   const [photoUrl, setPhotoUrl] = useState(null);
   const {
@@ -29,18 +36,27 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const { createuser } = useContext(AuthContext);
+
+
+  // photourl upload-----
+
+  // const imageFile = data.photo[0];
+  // const imageUrl = URL.createObjectURL(imageFile);
+  // setPhotoUrl(imageUrl);
+
 
   const onSubmit = (data) => {
-    const imageFile = data.photo[0];
-    const imageUrl = URL.createObjectURL(imageFile);
-    setPhotoUrl(imageUrl);
 
-    const payload = {
-      ...data,
-      photoUrl: imageUrl,
-    };
+    createuser(data.email, data.password)
+      .then(result => {
+        const payload = result.user;
+        console.log('Form Data Submitted:', payload);
+      })
+      .catch(err => {
+        console.log(err.message);
+      })
 
-    console.log('Form Data Submitted:', payload);
 
     // Reset form fields
     reset();
