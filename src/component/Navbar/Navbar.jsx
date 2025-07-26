@@ -7,10 +7,10 @@ import logo from '../../assets/jobrail_logo.png';
 
 const Navbar = () => {
     const links = <>
-        <Link className='text-[14px] font-semibold' to='/home'><li><a>Home</a></li></Link>
-        <Link className='text-[14px] font-semibold' to='/jobs'><li><a>Find a Job</a></li></Link>
-        <Link className='text-[14px] font-semibold' to='/blog'><li><a>Blog</a></li></Link>
-        <Link className='text-[14px] font-semibold' to='/contact'><li><a>Contact Us</a></li></Link>
+        <Link className='text-[14px] font-semibold' to='/home'>Home</Link>
+        <Link className='text-[14px] font-semibold' to='/jobs'>Find a Job</Link>
+        <Link className='text-[14px] font-semibold' to='/blog'>Blog</Link>
+        <Link className='text-[14px] font-semibold' to='/contact'>Contact Us</Link>
     </>
     return (
         <div className="navbar max-w-6xl mx-auto">
