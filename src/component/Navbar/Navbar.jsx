@@ -4,14 +4,28 @@ import './Navbar.css';
 import { VscSignIn } from "react-icons/vsc";
 import { PiSignInFill } from "react-icons/pi";
 import logo from '../../assets/jobrail_logo.png';
+import { useContext } from 'react';
+import AuthContext from '../../Context/AuthContext';
 
 const Navbar = () => {
+    const { user, signOutUser } = useContext(AuthContext);
     const links = <>
         <Link className='text-[14px] font-semibold' to='/home'>Home</Link>
         <Link className='text-[14px] font-semibold' to='/jobs'>Find a Job</Link>
         <Link className='text-[14px] font-semibold' to='/blog'>Blog</Link>
         <Link className='text-[14px] font-semibold' to='/contact'>Contact Us</Link>
     </>
+
+    const handleSignout = () => {
+        signOutUser()
+            .then(() => {
+                console.log('successsfully logged out')
+            })
+            .catch(() => {
+                console.log('failed log out')
+            })
+    }
+
     return (
         <div className="navbar max-w-6xl mx-auto">
             <div className="navbar-start">
@@ -35,13 +49,23 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-4">
-                <Link to='/register' className="link flex  items-center hover:text-prime hover:-translate-y-[2px] transition  duration-200 font-semibold">
-                    <PiSignInFill className='text-[17px]' />
-                    Register</Link>
-                <Link to='/signin' className='btn bg-prime border-none text-white hover:-translate-y-[2px] hover:bg-[#F49BAB] transition  duration-200'>
-                    <VscSignIn className='text-[17px]' />
-                    Sign in
-                </Link>
+                {
+                    user ? <>
+                        <Link onClick={handleSignout} to='/signin' className='btn bg-prime border-none text-white hover:-translate-y-[2px] hover:bg-[#F49BAB] transition  duration-200'>
+                            <VscSignIn className='text-[17px]' />
+                            Logout
+                        </Link>
+                    </> :
+                        <>
+                            <Link to='/register' className="link flex  items-center hover:text-prime hover:-translate-y-[2px] transition  duration-200 font-semibold">
+                                <PiSignInFill className='text-[17px]' />
+                                Register</Link>
+                            <Link to='/signin' className='btn bg-prime border-none text-white hover:-translate-y-[2px] hover:bg-[#F49BAB] transition  duration-200'>
+                                <VscSignIn className='text-[17px]' />
+                                Sign in
+                            </Link>
+                        </>
+                }
             </div>
         </div>
     );

@@ -19,7 +19,7 @@ const Signin = () => {
 
     signinUser(email, password)
       .then(result => {
-        console.log('signed in ',result.user)
+        console.log('signed in successfully ', result.user)
       })
       .catch(error => {
         console.log(error.message)
@@ -49,7 +49,7 @@ const Signin = () => {
                 <span className='mr-2'>Don't Have an account?</span>
                 <span className='text-prime hover:text-secondaryone'><Link to='/register'>Register Here</Link></span>
               </div>
-              <button className="btn btn-neutral mt-4">Login</button>
+              <button className="btn btn-neutral mt-4 bg-prime border-0 text-white hover:bg-secondaryone">Login</button>
             </fieldset>
           </form>
         </div>

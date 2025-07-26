@@ -48,7 +48,7 @@ const Register = () => {
                 <span className='mr-2'>Already Have an account?</span>
                 <span className='text-prime hover:text-secondaryone'><Link to='/signin'>Login Here</Link></span>
               </div>
-              <button className="btn btn-neutral mt-4">Login</button>
+              <button className="btn btn-neutral mt-4 bg-prime border-0 text-white hover:bg-secondaryone">Register</button>
             </fieldset>
           </form>
         </div>
