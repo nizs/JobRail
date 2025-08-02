@@ -3,6 +3,7 @@ import Lottie from 'lottie-react';
 import regAniime from '../../assets/lottie/register_animation.json';
 import AuthContext from '../../Context/AuthContext';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../../component/SocialLogin/SocialLogin';
 
 
 
@@ -16,7 +17,7 @@ const Register = () => {
     const password = form.password.value;
     console.log(email, password);
 
-    createuser(email, password)
+    createUser(email, password)
       .then(result => {
         console.log(result.user)
       })
@@ -50,6 +51,12 @@ const Register = () => {
               </div>
               <button className="btn btn-neutral mt-4 bg-prime border-0 text-white hover:bg-secondaryone">Register</button>
             </fieldset>
+            <div className='flex items-center gap-2 my-4'>
+                <span className='w-1/2 block border-t-1'></span>
+                <span>OR</span>
+                <span className='w-1/2 block border-t-1'></span>
+              </div>
+              <SocialLogin />
           </form>
         </div>
       </div>

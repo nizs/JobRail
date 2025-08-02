@@ -10,10 +10,10 @@ import AuthContext from '../../Context/AuthContext';
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext);
     const links = <>
-        <Link className='text-[14px] font-semibold' to='/home'>Home</Link>
-        <Link className='text-[14px] font-semibold' to='/jobs'>Find a Job</Link>
-        <Link className='text-[14px] font-semibold' to='/blog'>Blog</Link>
-        <Link className='text-[14px] font-semibold' to='/contact'>Contact Us</Link>
+        <Link className='text-[15px] font-semibold mr-6 border-b-2 pb-2 border-white hover:border-prime' to='/home'>Home</Link>
+        <Link className='text-[15px] font-semibold mr-6 border-b-2 pb-2 border-white hover:border-prime' to='/jobs'>Find a Job</Link>
+        <Link className='text-[15px] font-semibold mr-6 border-b-2 pb-2 border-white hover:border-prime' to='/blog'>Blog</Link>
+        <Link className='text-[15px] font-semibold border-b-2 pb-2 border-white hover:border-prime' to='/contact'>Contact Us</Link>
     </>
 
     const handleSignout = () => {
@@ -27,7 +27,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar max-w-6xl mx-auto">
+        <div className="navbar max-w-6xl mx-auto py-6">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

@@ -3,6 +3,7 @@ import Lottie from 'lottie-react';
 import loginAnime from '../../assets/lottie/login_animation.json';
 import AuthContext from '../../Context/AuthContext';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../../component/SocialLogin/SocialLogin';
 
 
 
@@ -28,33 +29,41 @@ const Signin = () => {
   }
 
   return (
+    <>
 
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <div className="py-6">
-            <Lottie animationData={loginAnime}></Lottie>
+      <div className="hero bg-base-200 min-h-screen">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="text-center lg:text-left">
+            <div className="py-6">
+              <Lottie animationData={loginAnime}></Lottie>
+            </div>
+          </div>
+          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-4">
+            <h1 className="text-5xl font-bold text-center my-5">Login Here!</h1>
+            <form onSubmit={handleSignin} className="card-body">
+              <fieldset className="fieldset">
+                <label className="label">Email</label>
+                <input type="email" name='email' className="input" placeholder="Email" />
+                <label className="label">Password</label>
+                <input type="password" name='password' className="input" placeholder="Password" />
+                <div><a className="link link-hover">Forgot password?</a></div>
+                <div className='text-sm'>
+                  <span className='mr-2'>Don't Have an account?</span>
+                  <span className='text-prime hover:text-secondaryone'><Link to='/register'>Register Here</Link></span>
+                </div>
+                <button className="btn btn-neutral mt-4 bg-prime border-0 text-white hover:bg-secondaryone">Login</button>
+              </fieldset>
+              <div className='flex items-center gap-2 my-4'>
+                <span className='w-1/2 block border-t-1'></span>
+                <span>OR</span>
+                <span className='w-1/2 block border-t-1'></span>
+              </div>
+              <SocialLogin />
+            </form>
           </div>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <h1 className="text-5xl font-bold text-center my-5">Login Here!</h1>
-          <form onSubmit={handleSignin} className="card-body">
-            <fieldset className="fieldset">
-              <label className="label">Email</label>
-              <input type="email" name='email' className="input" placeholder="Email" />
-              <label className="label">Password</label>
-              <input type="password" name='password' className="input" placeholder="Password" />
-              <div><a className="link link-hover">Forgot password?</a></div>
-              <div className='text-sm'>
-                <span className='mr-2'>Don't Have an account?</span>
-                <span className='text-prime hover:text-secondaryone'><Link to='/register'>Register Here</Link></span>
-              </div>
-              <button className="btn btn-neutral mt-4 bg-prime border-0 text-white hover:bg-secondaryone">Login</button>
-            </fieldset>
-          </form>
-        </div>
       </div>
-    </div>
+    </>
 
   );
 };
